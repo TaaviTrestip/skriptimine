@@ -3,6 +3,7 @@
 # Antud skript tervitab kasutajat
 # anda õigused chmod +x failinimi commandiga
 
+user="${USER^}"
 
-echo "Tere, $USER"
+echo "Tere, $user"
 echo "!"
