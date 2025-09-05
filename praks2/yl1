@@ -1,0 +1,8 @@
+#! /bin/bash
+
+# Antud skript tervitab kasutajat
+# anda õigused chmod +x failinimi commandiga
+
+
+echo "Tere, $USER"
+echo "!"
