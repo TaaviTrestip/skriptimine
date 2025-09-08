@@ -1,0 +1,10 @@
+#! /bin/bash
+
+read -p "Sisesta ainepunktide arv (täisarv): " ainepunktid
+read -p "Sisesta nädalate arv (täisarv): " nadalad
+
+kogutunnid=$(echo "$ainepunktid * 26" | bc)
+aeg=`echo "scale=1;$kogutunnid/$nadalad" | bc`
+aeg_ymardatud=`echo "($aeg+0.9)/1" | bc`
+
+echo "Ühe nädala eeldatav ajakulu (ümardatud ülespoole): $aeg_ymardatud tundi."
