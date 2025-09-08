@@ -1,0 +1,13 @@
+#! /bin/bash
+
+read -p "Sisesta reisijate arv grupis: " reisijad
+
+read -p "Sisesta kohtade arv ühes bussis: " kohad
+
+taidetud_bussid=$(( reisijad / kohad ))
+
+ylejaanud=$(( reisijad % kohad ))
+
+echo "Täielikult täidetud busse: $taidetud_bussid"
+
+echo "Maha jäi $ylejaanud inimest."
