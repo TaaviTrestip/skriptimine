@@ -1,0 +1,15 @@
+#! /bin/bash
+# See skript võtab kasutaja antud arvu ja ütleb kas see on paaris või paaritu
+
+if [ $# -ne 1 ];then
+	echo "Käivita skript koos arvuga mida kontrollida. ./paarsus <arv>"
+else
+	# Skript kasutab käsurea esimest argumenti kui skripti jooksutada
+	arv=$1
+	if [ $((arv % 2)) -eq 0 ]; then
+		echo "$arv on paaris."
+
+	else
+		echo "$arv on paaritu."
+	fi
+fi
