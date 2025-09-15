@@ -1,0 +1,22 @@
+#! /bin/bash
+# See skript tervitab vastavalt ajale
+
+tund=$(date +%H)
+kasutaja="${USER^}"
+
+if ! [[ "$tund" =~ ^[0-9]+$ ]]; then
+  echo "Viga"
+  exit 1
+fi
+
+if [ "$tund" -ge 6 ] && [ "$tund" -lt 12 ]; then
+  echo "Tere hommikust $kasutaja!"
+elif [ "$tund" -ge 12 ] && [ "$tund" -lt 18 ]; then
+  echo "Tere päevast $kasutaja!"
+elif [ "$tund" -ge 18 ] && [ "$tund" -lt 22 ]; then
+  echo "Tere õhtust $kasutaja!"
+elif [ "$tund" -ge 22 ] || [ "$tund" -lt 6 ]; then
+  echo "Head ööd $kasutaja!"
+else
+  echo "Viga"
+fi
