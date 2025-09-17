@@ -1,0 +1,15 @@
+#! /bin/bash
+# See skript võtab kasutajalt suvalise arvu ja arvutab selle arvu numbrite summa
+
+read -p "Sisesta suvaline täisarv: " arv
+
+summa=0
+algarv=$arv
+
+while [ $arv -ne 0 ]; do
+	number=$(($arv % 10))
+	summa=$(($summa + $number))
+	arv=$(($arv / 10))
+done
+
+echo "Arvu $algarv numbrite summa on $summa"
