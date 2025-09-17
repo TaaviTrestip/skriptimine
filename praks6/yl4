@@ -1,0 +1,18 @@
+#! /bin/bash
+# See skript küsib kasutajalt suvalise arvu ja kontrollib, et kas see on algarv või mitte
+
+read -p "Sisesta suvaline täisarv: " arv
+
+if test $arv -eq 0 -o $arv -eq 1; then
+	echo "$arv EI ole nii algarv ega kordarv."
+elif test $arv -eq 2;then
+	echo "$arv on algarv."
+else
+	if [ $((arv % 2)) -eq 0 ]; then
+		echo "$arv EI ole algarv."
+
+	else
+		echo "$arv on algarv."
+	fi
+
+fi
