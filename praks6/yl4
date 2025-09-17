@@ -7,10 +7,16 @@ if test $arv -eq 0 -o $arv -eq 1; then
 	echo "$arv EI ole nii algarv ega kordarv."
 elif test $arv -eq 2 -o $arv -eq 3;then
 	echo "$arv on algarv."
+elif test $arv -eq 5 -o $arv -eq 7; then
+	echo "$arv on algarv."
 else
 	if [ $((arv % 2)) -eq 0 ]; then
 		echo "$arv EI ole algarv."
 	elif [ $((arv % 3)) -eq 0 ]; then
+		echo "$arv EI ole algarv."
+	elif [ $((arv % 5)) -eq 0 ]; then
+		echo "$arv EI ole algarv."
+	elif [ $((arv % 7)) -eq 0 ]; then
 		echo "$arv EI ole algarv."
 	else
 		echo "$arv on algarv."
