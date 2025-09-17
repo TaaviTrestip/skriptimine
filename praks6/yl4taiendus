@@ -1,0 +1,19 @@
+#! /bin/bash
+# See skript väljastab 20 esimese täisarvu kohta kas see on algarv või mitte
+
+for arv in {1..20}; do
+	if test $arv -eq 0 -o $arv -eq 1; then
+		echo "$arv EI ole nii algarv ega kordarv."
+	elif test $arv -eq 2 -o $arv -eq 3;then
+		echo "$arv on algarv."
+	else
+		if [ $((arv % 2)) -eq 0 ]; then
+			echo "$arv EI ole algarv."
+		elif [ $((arv % 3)) -eq 0 ]; then
+			echo "$arv EI ole algarv."
+		else
+			echo "$arv on algarv."
+		fi
+
+	fi
+done
