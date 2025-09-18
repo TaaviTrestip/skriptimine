@@ -1,0 +1,15 @@
+#! /bin/bash
+# See skript teeb backupi kasutaja antud kataloogist ja pakib selle kokku koos hetke kuupäevaga
+
+read -p "Sisesta kataloogi tee, mida soovid varundada: " kataloog
+if [ ! -d "$kataloog" ]; then
+    echo "ERROR: Kataloogi '$kataloog' ei eksisteeri."
+    exit 1
+fi
+
+katalooginimi=$(basename "$kataloog")
+kuupaev=$(date +"%d%b%Y" | tr '[:upper:]' '[:lower:]')
+
+tar -czf ./backup/"$katalooginimi".backup."$kuupaev".tar.gz -C "$(dirname "$kataloog")" "$katalooginimi"
+
+echo "Varundamine lõpetatud. Fail salvestatud: ./backup/$katalooginimi.backup.$kuupaev.tar.gz"
