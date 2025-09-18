@@ -1,0 +1,10 @@
+#! /bin/bash
+# See skript teeb backupi kaustast ja pakkib selle kokku
+
+echo "Varundan kataloogi './test' faili 'test.backup.tar.gz' kataloogi './backup'."
+
+mkdir -p ./backup
+
+tar -czf ./backup/test.backup.tar.gz ./test
+
+echo "Varundamine lõpetatud. Fail salvestatud: ./backup/test.backup.tar.gz"
