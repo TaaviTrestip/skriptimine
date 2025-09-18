@@ -1,0 +1,14 @@
+#! /bin/bash
+# See skript teeb backupi kasutaja antud kataloogist ja pakib selle kokku
+
+read -p "Sisesta kataloogi tee, mida soovid varundada: " kataloog
+if [ ! -d "$kataloog" ]; then
+    echo "ERROR: Kataloogi '$kataloog' ei eksisteeri."
+    exit 1
+fi
+
+katalooginimi=$(basename "$kataloog")
+
+tar -czf ./backup/"$katalooginimi".backup.tar.gz -C "$(dirname "$kataloog")" "$katalooginimi"
+
+echo "Varundamine lõpetatud. Fail salvestatud: ./backup/$katalooginimi.backup.tar.gz"
