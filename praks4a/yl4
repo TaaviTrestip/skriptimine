@@ -3,12 +3,20 @@
 
 read -p "Sisesta kataloogi tee, mida soovid varundada: " kataloog
 if [ ! -d "$kataloog" ]; then
-    echo "ERROR: Kataloogi '$kataloog' ei eksisteeri."
+    echo "Kataloogi '$kataloog' ei eksisteeri."
+    exit 1
+fi
+
+if [ ! -r "$kataloog" ]; then
+    echo "Selle kausta varundamiseks on vaja rohkem õigusi."
     exit 1
 fi
 
 katalooginimi=$(basename "$kataloog")
 
-tar -czf ./backup/"$katalooginimi".backup.tar.gz -C "$(dirname "$kataloog")" "$katalooginimi"
+if ! tar -czf ./backup/"$katalooginimi".backup.tar.gz -C "$(dirname "$kataloog")" "$katalooginimi" 2>/dev/null; then
+    echo "Varundamine ebaõnnestus. Võimalik, et sul puuduvad vajalikud õigused kõikide failide lugemiseks."
+    exit 1
+fi
 
 echo "Varundamine lõpetatud. Fail salvestatud: ./backup/$katalooginimi.backup.tar.gz"
