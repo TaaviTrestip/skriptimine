@@ -12,11 +12,54 @@ if [ ! -r "$kataloog" ]; then
     exit 1
 fi
 
-katalooginimi=$(basename "$kataloog")
+read -p "Sisesta kataloog, kuhu soovid backupi salvestada: " backup_kataloog
 
-if ! tar -czf ./backup/"$katalooginimi".backup.tar.gz -C "$(dirname "$kataloog")" "$katalooginimi" 2>/dev/null; then
-    echo "Varundamine ebaõnnestus. Võimalik, et sul puuduvad vajalikud õigused kõikide failide lugemiseks."
+if [ ! -d "$backup_kataloog" ]; then
+    echo "Backup kataloogi '$backup_kataloog' ei eksisteeri."
     exit 1
 fi
 
-echo "Varundamine lõpetatud. Fail salvestatud: ./backup/$katalooginimi.backup.tar.gz"
+if [ ! -w "$backup_kataloog" ]; then
+    echo "Backup kataloogi '$backup_kataloog' kirjutamise õigused puuduvad."
+    exit 1
+fi
+
+katalooginimi=$(basename "$kataloog")
+
+function leia_vaba_failinimi() {
+    local baasnimi="$1"
+    local kataloog="$2"
+    local number=1
+    local failinimi="$baasnimi.backup.tar.gz"
+
+    if [ ! -e "$kataloog/$failinimi" ]; then
+        echo "$failinimi"
+        return
+    fi
+
+    while [ -e "$kataloog/$baasnimi.backup.$number.tar.gz" ]; do
+        number=$((number + 1))
+    done
+
+    echo "$baasnimi.backup.$number.tar.gz"
+}
+
+failinimi=$(leia_vaba_failinimi "$katalooginimi" "$backup_kataloog")
+
+if [ -e "$backup_kataloog/$katalooginimi.backup.tar.gz" ]; then
+    read -p "Backup fail '$katalooginimi.backup.tar.gz' juba olemas. Kas soovid luua uue varukoopia versiooni? (jah/ei): " vastus
+    if [[ "$vastus" =~ ^(jah)$ ]]; then
+        failinimi=$(leia_vaba_failinimi "$katalooginimi" "$backup_kataloog")
+    else
+        echo "Varundamine katkestatud."
+        exit 0
+    fi
+fi
+
+if tar -czf "$backup_kataloog/$failinimi" -C "$(dirname "$kataloog")" "$katalooginimi" 2>/dev/null; then
+    echo "Varundamine lõpetatud. Fail salvestatud: $backup_kataloog/$failinimi"
+else
+    echo "Varundamine ebaõnnestus. Võimalik, et sul puuduvad vajalikud õigused kõikide failide lugemiseks."
+    [ -f "$backup_kataloog/$failinimi" ] && rm -f "$backup_kataloog/$failinimi"
+    exit 1
+fi
