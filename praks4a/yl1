@@ -1,0 +1,11 @@
+#! /bin/bash
+# Küsib kasutaja nime, tervitab teda ja küsib sünniaasta ja ütleb su vanuse
+
+read -p "Sisesta oma nimi: " nimi
+echo "Tere tulemast, $nimi!"
+
+aasta=$(date +%Y)
+
+read -p "Sisesta oma sünniaasta: " sunniaasta
+vanus=$((aasta-sunniaasta))
+echo "Sa oled $vanus aastat vana."
