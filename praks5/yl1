@@ -12,8 +12,8 @@ elif test $vanus -ge 11 -a $vanus -lt 18; then
 	echo "Sa oled nooruk."
 elif test $vanus -ge 18 -a $vanus -lt 63; then
 	echo "Sa oled täiskasvanu."
-elif test $vanus -ge 63; then
+elif test $vanus -ge 63 -a $vanus -lt 120; then
 	echo "Sa oled senioor."
 else
-	echo "Vigane vanus"
+	echo "Sa ei ole osa enam sellest maailmast või oled fictional tegelane"
 fi
