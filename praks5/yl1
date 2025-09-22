@@ -1,6 +1,10 @@
 #! /bin/bash
 
 read -p "Sisesta vanus: " vanus
+if ! [[ "$vanus" =~ ^-?[0-9]+$ ]]; then
+    echo "Vigane vanus"
+    exit 1
+fi
 
 if  test $vanus -gt 0 -a $vanus -lt 11; then
 	echo "Sa oled laps."

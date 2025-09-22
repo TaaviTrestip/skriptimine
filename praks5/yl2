@@ -1,6 +1,10 @@
 #! /bin/bash
 
 read -p "Sisesta kuu number: " kuu
+if ! [[ "$kuu" =~ ^-?[0-9]+$ ]]; then
+    echo "Vigane kuu number. Palun sisesta arv vahemikus 1 kuni 12."
+    exit 1
+fi
 
 if test $kuu -eq 12 -o $kuu -eq 1 -o $kuu -eq 2; then
 	echo "Praegu on talv."
