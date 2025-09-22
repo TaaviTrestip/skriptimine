@@ -1,0 +1,11 @@
+#! /bin/bash
+#Väljastab mingi kujundi
+
+for i in {1..5}; do
+	echo -n "$i."
+	for (( n = 1 ; n <= 5; n++ )); do
+		k="*"
+		echo -n "$k"
+	done
+	echo ""
+done
