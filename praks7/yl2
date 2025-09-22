@@ -8,8 +8,18 @@ if ! [[ "$rida" =~ ^-?[0-9]+$ ]]; then
     exit 1
 fi
 
+if (( rida > 200 )); then
+    echo "Ridade arv ei tohi olla suurem kui 200."
+    exit 1
+fi
+
 if ! [[ "$tarnid" =~ ^-?[0-9]+$ ]]; then
     echo "Sisestatud väärtus ei ole arv."
+    exit 1
+fi
+
+if (( tarnid > 200 )); then
+    echo "Tärnide arv ei tohi olla suurem kui 200."
     exit 1
 fi
 
