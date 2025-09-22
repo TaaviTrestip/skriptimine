@@ -4,6 +4,10 @@
 if [ $# -ne 1 ];then
 	echo "Käivita skript koos arvuga mida kontrollida. ./paarsus <arv>"
 else
+	if ! [[ "$1" =~ ^-?[0-9]+$ ]]; then
+        	echo "Antud arv ei ole täisarv."
+        	exit 1
+    	fi
 	# Skript kasutab käsurea esimest argumenti kui skripti jooksutada
 	arv=$1
 	if [ $((arv % 2)) -eq 0 ]; then
