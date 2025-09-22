@@ -1,0 +1,14 @@
+#! /bin/bash
+#Väljastab mingi kujundi vastavalt kasutaja antud parameetritele
+
+read -p "Sisesta ridade arv: " rida
+read -p "Sisesta tärnide arv reas: " tarnid
+
+for (( i=1; i<= rida; i++ )); do
+	echo -n "$i."
+	for (( n = 1; n <= $tarnid; n++ )); do
+		k="*"
+		echo -n "$k"
+	done
+	echo ""
+done
