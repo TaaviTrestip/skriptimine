@@ -2,6 +2,10 @@
 # Küsib rea arvu ja siis väljastab sellega treppide laadse kujundi
 
 read -p "Sisesta ridade arv: " rida
+if ! [[ "$rida" =~ ^-?[0-9]+$ ]]; then
+    echo "Sisestatud väärtus ei ole arv."
+    exit 1
+fi
 
 for (( i=1; i<=rida; i++ )); do
     echo -n "$i."
