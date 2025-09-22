@@ -2,6 +2,10 @@
 # See skript võtab kasutajalt suvalise arvu ja arvutab selle arvu numbrite summa
 
 read -p "Sisesta suvaline täisarv: " arv
+if ! [[ "$arv" =~ ^-?[0-9]+$ ]]; then
+    echo "Sisestatud väärtus ei ole arv."
+    exit 1
+fi
 
 summa=0
 algarv=$arv
