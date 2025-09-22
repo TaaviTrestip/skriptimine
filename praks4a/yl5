@@ -47,8 +47,8 @@ function leia_vaba_failinimi() {
 
 failinimi=$(leia_vaba_failinimi "$katalooginimi" "$backup_kataloog")
 
-if [ -e "$backup_kataloog/$katalooginimi.backup.tar.gz" ]; then
-    read -p "Backup fail '$katalooginimi.backup.tar.gz' juba olemas. Kas soovid luua uue varukoopia versiooni? (jah/ei): " vastus
+if [ -e "$backup_kataloog/$katalooginimi.backup.$kuupaev.tar.gz" ]; then
+    read -p "Backup fail '$katalooginimi.backup.$kuupaev.tar.gz' juba olemas. Kas soovid luua uue varukoopia versiooni? (jah/ei): " vastus
     if [[ "$vastus" =~ ^(jah)$ ]]; then
         failinimi=$(leia_vaba_failinimi "$katalooginimi" "$backup_kataloog")
     else
