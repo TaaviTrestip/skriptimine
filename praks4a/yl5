@@ -1,7 +1,13 @@
 #! /bin/bash
 # See skript teeb backupi kasutaja antud kataloogist ja pakib selle kokku koos hetke kuupäevaga
 
-read -p "Sisesta kataloogi tee, mida soovid varundada: " kataloog
+expand_path() {
+    eval echo "$1"
+}
+
+read -p "Sisesta kataloogi tee, mida soovid varundada: " kataloog_input
+kataloog=$(expand_path "$kataloog_input")
+
 if [ ! -d "$kataloog" ]; then
     echo "Kataloogi '$kataloog' ei eksisteeri."
     exit 1
@@ -12,7 +18,8 @@ if [ ! -r "$kataloog" ]; then
     exit 1
 fi
 
-read -p "Sisesta kataloog, kuhu soovid backupi salvestada: " backup_kataloog
+read -p "Sisesta kataloog, kuhu soovid backupi salvestada: " backup_input
+backup_kataloog=$(expand_path "$backup_input")
 
 if [ ! -d "$backup_kataloog" ]; then
     echo "Backup kataloogi '$backup_kataloog' ei eksisteeri."
