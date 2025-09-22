@@ -4,6 +4,12 @@
 echo -n "Sisesta täisarv: "
 read arv
 
+if ! [[ "$arv" =~ ^-?[0-9]+$ ]]; then
+    echo "Sisestatud väärtus ei ole täisarv."
+    exit 1
+fi
+
+
 if [ $((arv % 2)) -eq 0 ]; then
 	echo "$arv on paaris."
 
