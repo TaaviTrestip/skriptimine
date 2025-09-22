@@ -1,0 +1,24 @@
+#! /bin/bash
+#Väljastab mingi kujundi vastavalt kasutaja antud parameetritele ja selles on auk
+
+read -p "Sisesta ridade arv: " rida
+read -p "Sisesta tärnide arv reas: " tarnid
+
+
+for (( i=1; i<=rida; i++ )); do
+    echo -n "$i."
+    if [[ $i -eq 1 || $i -eq $rida ]]; then
+        for (( j=1; j<=tarnid; j++ )); do
+            echo -n "*"
+        done
+    else
+        echo -n "*"
+        for (( j=2; j<tarnid; j++ )); do
+            echo -n " "
+        done
+        if (( tarnid > 1 )); then
+            echo -n "*"
+        fi
+    fi
+    echo
+done
