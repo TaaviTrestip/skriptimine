@@ -1,8 +1,17 @@
 #! /bin/bash
 
 read -p "Sisesta reisijate arv grupis: " reisijad
-
 read -p "Sisesta kohtade arv ühes bussis: " kohad
+
+if ! [[ "$reisijad" =~ ^-?[0-9]+$ ]]; then
+    echo "Sisestatud reisijate arv ei ole täisarv."
+    exit 1
+fi
+
+if ! [[ "$kohad" =~ ^-?[0-9]+$ ]]; then
+    echo "Sisestatud kohtade arv ei ole täisarv."
+    exit 1
+fi
 
 taidetud_bussid=$(( reisijad / kohad ))
 ylejaanud=$(( reisijad % kohad ))
