@@ -2,7 +2,7 @@
 # Skript, mis kuvab kujundi, kus igal real on o-d ja tärnid *,
 # kus tärnide arv iga rea lõpus suureneb vastavalt rea numbrile.
 
-read -p "Sisesta ridade arv: " rida
+read -p "Sisesta ridade arv (1-200): " rida
 if ! [[ "$rida" =~ ^-?[0-9]+$ ]]; then
     echo "Sisestatud väärtus ei ole arv."
     exit 1

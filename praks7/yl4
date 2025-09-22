@@ -1,7 +1,7 @@
 #! /bin/bash
 # Küsib rea arvu ja siis väljastab sellega treppide laadse kujundi
 
-read -p "Sisesta ridade arv: " rida
+read -p "Sisesta ridade arv (1-200): " rida
 if ! [[ "$rida" =~ ^-?[0-9]+$ ]]; then
     echo "Sisestatud väärtus ei ole arv."
     exit 1

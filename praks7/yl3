@@ -1,8 +1,8 @@
 #! /bin/bash
 #Väljastab mingi kujundi vastavalt kasutaja antud parameetritele ja selles on auk
 
-read -p "Sisesta ridade arv: " rida
-read -p "Sisesta tärnide arv reas: " tarnid
+read -p "Sisesta ridade arv (1-200): " rida
+read -p "Sisesta tärnide arv reas (1-200): " tarnid
 if ! [[ "$rida" =~ ^-?[0-9]+$ ]]; then
     echo "Sisestatud väärtus ei ole arv."
     exit 1
