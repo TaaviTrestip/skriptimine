@@ -1,0 +1,32 @@
+#! /bin/bash
+# Taavi Trestip, skript menu
+# Digitaalne menüü mis laseb valida kasutajal oma toidu
+
+echo "Vali üks järgmistest toitudest:"
+echo "1) liha ja kartulid"
+echo "2) kala ja krõpsud"
+echo "3) supp ja salat"
+
+read -p "Tee oma valik (1 või 2 või 3): " valik
+if ! [[ "$valik" =~ ^-?[0-9]+$ ]]; then
+    echo "Valik peab olema sisestatud arvuga."
+    exit 1
+fi
+
+case $valik in
+  1)
+    echo "Väga maitsev, aga jälgi oma tervist!"
+    echo "Head isu!"
+    ;;
+  2)
+    echo "Brititoit on maitsev!"
+    echo "Head isu!"
+    ;;
+  3)
+    echo "Nii tervislik ja igav..."
+    echo "Head isu!"
+    ;;
+  *)
+    echo "Palun sisesta 1, 2 või 3."
+    ;;
+esac
