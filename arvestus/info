@@ -1,0 +1,10 @@
+#! /bin/bash
+# Taavi Trestip, skript info
+# See skript tervitab sisselogitud kasutajat ja väljastab kuupäeva ja aja
+
+user="${USER^}"
+today_date="$(date +"Today is %A, %B %d, %Y")"
+time_rn="$(date +"Time is %H:%M")"
+
+echo "Tere, $user."
+echo "$today_date. $time_rn"
