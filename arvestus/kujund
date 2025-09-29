@@ -1,0 +1,22 @@
+#! /bin/bash
+# Taavi Trestip, skript kujund
+# See skript küsib kasutaja käest ridade arvu ja vastavalt selle väljastab kujundi
+
+read -p "Sisesta ridade arv(1-100): " ridade_arv
+
+if ! [[ "$ridade_arv" =~ ^[0-9]+$ ]] || [ "$ridade_arv" -le 0 ]; then
+	echo "Palun sisesta positiivne täisarv."
+	exit 1
+fi
+
+if (( ridade_arv > 100 )); then
+    echo "Ridade arv ei tohi olla suurem kui 100."
+    exit 1
+fi
+
+for ((i=ridade_arv; i>0; i--)); do
+	for ((j=0; j<i; j++)); do
+		echo -n "*"
+	done
+	echo ""
+done
